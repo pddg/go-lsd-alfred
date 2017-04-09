@@ -1,0 +1,6 @@
+package: github.com/pddg/go-lsd-alfred
+import:
+  - package: github.com/andybalholm/cascadia
+  - package: golang.org/x/net/html
+  - package: github.com/PuerkitoBio/goquery
+  - package: github.com/urfave/cli
