@@ -1,8 +1,8 @@
 package scraping
 
 import (
-	"github.com/pddg/go-lsd-alfred/models"
 	"github.com/PuerkitoBio/goquery"
+	"github.com/pddg/go-lsd-alfred/models"
 )
 
 func ScrapeMeaning(doc *goquery.Document, response *[]models.ResponseItem) error {

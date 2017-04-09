@@ -1,12 +1,12 @@
 package main
 
 import (
-	"fmt"
 	"encoding/json"
-	"os"
-	"github.com/urfave/cli"
+	"fmt"
 	"github.com/pddg/go-lsd-alfred/models"
 	sc "github.com/pddg/go-lsd-alfred/scraping"
+	"github.com/urfave/cli"
+	"os"
 )
 
 func main() {
@@ -14,30 +14,30 @@ func main() {
 	app.Name = "alfred-lsd"
 	app.Usage = "Search a given word or phrase in Life Science Dictionary (https://lsd-project.jp/weblsd/)"
 	app.Version = "0.1.0"
-	app.Commands = []cli.Command {
+	app.Commands = []cli.Command{
 		{
-			Name:		"begin",
-			Category:	"translate",
-			Usage:		"Search word beginning with a given argument.",
-			Action: 	search,
+			Name:     "begin",
+			Category: "translate",
+			Usage:    "Search word beginning with a given argument.",
+			Action:   search,
 		},
 		{
-			Name:		"end",
-			Category:	"translate",
-			Usage:		"Search word ending with a given argument.",
-			Action: 	search,
+			Name:     "end",
+			Category: "translate",
+			Usage:    "Search word ending with a given argument.",
+			Action:   search,
 		},
 		{
-			Name:		"include",
-			Category:	"translate",
-			Usage:		"Search word containing a given argument.",
-			Action: 	search,
+			Name:     "include",
+			Category: "translate",
+			Usage:    "Search word containing a given argument.",
+			Action:   search,
 		},
 		{
-			Name:		"equal",
-			Category:	"translate",
-			Usage:		"Search word equaring a given argument.",
-			Action: 	search,
+			Name:     "equal",
+			Category: "translate",
+			Usage:    "Search word equaring a given argument.",
+			Action:   search,
 		},
 	}
 	app.Run(os.Args)
