@@ -1,5 +1,5 @@
-hash: b51064a07f66831e69e5eb8f42a18bdaa16d2905ed4343b0177d702c35cabb90
-updated: 2017-04-09T16:36:16.187020171+09:00
+hash: 09d4dbc537ddcaa9636abf7a64fa29f49c28a7f9060a3488d6745ee17eff064f
+updated: 2017-04-10T13:12:38.787449786+09:00
 imports:
 - name: github.com/andybalholm/cascadia
   version: 349dd0209470eabd9514242c688c403c0926d266
@@ -12,4 +12,9 @@ imports:
   subpackages:
   - html
   - html/atom
+- name: golang.org/x/text
+  version: f4b4367115ec2de254587813edaa901bc1c723a8
+  subpackages:
+  - transform
+  - unicode/norm
 testImports: []
