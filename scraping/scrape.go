@@ -10,6 +10,10 @@ func ScrapeMeaning(doc *goquery.Document, response *[]models.ResponseItem) error
 	doc.Find("div.caption").Each(func(_ int, caption *goquery.Selection) {
 		subtitle := caption.Find("span.headword").Text()
 		meanings := caption.Next()
+		// if next section is "relword" or something different from "meanings", search "meanings"
+		if !meanings.HasClass("meanings") {
+			meanings = meanings.Next()
+		}
 		explanation := meanings.Find("span.explanation").First().Text()
 		meanings.Find("span.headword").Each(func(_ int, meaning *goquery.Selection) {
 			item := new(models.ResponseItem)
