@@ -11,7 +11,7 @@ func ScrapeMeaning(doc *goquery.Document, response *[]models.ResponseItem) error
 		subtitle := caption.Find("span.headword").Text()
 		meanings := caption.Next()
 		// if next section is "relword" or something different from "meanings", search "meanings"
-		if !meanings.HasClass("meanings") {
+		if !meanings.HasClass("meaning") {
 			meanings = meanings.Next()
 		}
 		explanation := meanings.Find("span.explanation").First().Text()
