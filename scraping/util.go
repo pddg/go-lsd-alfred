@@ -4,7 +4,6 @@ import (
 	"github.com/PuerkitoBio/goquery"
 	"github.com/pddg/go-lsd-alfred/models"
 	"golang.org/x/text/unicode/norm"
-	"strings"
 )
 
 const BaseUrl string = "https://lsd-project.jp"
@@ -34,7 +33,7 @@ func CreateOrigin(mode string, query string) *models.ResponseItem {
 }
 
 func createModItem(item *models.ResponseItem, keyname string, subtitle string, arg string, valid bool) {
-	switch strings.ToLower(keyname) {
+	switch keyname {
 	case ShiftKey:
 		item.Mod.Shift.Subtitle = subtitle
 		item.Mod.Shift.Arg = arg

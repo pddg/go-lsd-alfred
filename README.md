@@ -1,5 +1,7 @@
 # go-lsd-alfred
 
+[![Build Status](https://travis-ci.org/pddg/go-lsd-alfred.svg?branch=master)](https://travis-ci.org/pddg/go-lsd-alfred)
+
 Alfred 3用のWorkfrowで用いる簡単なCLIツール．  
 
 ライフサイエンス辞書を検索する．
