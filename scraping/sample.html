@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta http-equiv="content-language" content="ja">
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <script type="text/javascript" src="/js/service.js?ver=170304"></script>
+    <link rel='stylesheet' media='all' href='/css/service_rm.css?ver=170304' type='text/css'>
+    <link rel='stylesheet' media='all' href='/css/service_rim.css?ver=170304' type='text/css'>
+    <script type="text/javascript">
+        var fontclass = GetCookie();
+        if (fontclass.match(/^(s|l|xl)$/)) {
+            document.write("<link rel='stylesheet' media='all' href='/css/service_r" + fontclass + ".css?ver=170304' type='text/css'>");
+            document.write("<link rel='stylesheet' media='all' href='/css/service_ri" + fontclass + ".css?ver=170304' type='text/css'>");
+        }
+        window.onpopstate = function () {
+            closeMenu();
+        }
+    </script>
+    <title>ライフサイエンス辞書: cell</title>
+    <meta name="description"
+          content="生命科学分野で使われる用語を収集し「ライフサイエンス辞書」として提供しています。英和・和英辞書、英語+日本語シソーラス、コーパス検索（共起表現検索）、ネイティブ話者による発音、オンデマンド英語教材、英日逐語訳ツールなど。">
+</head>
+<body onLoad="incremental();getSavedOptions('ejdic');hideSelected();setfocus();">
+
+<div class="container" id="container">
+    <div class="header_all" id="page_top">
+        <div class="preference">
+            <div class="for_pc">
+                サーバ [
+                <a href="https://lsd-project.jp/ja/service/"><span class="unchecked" id="server1">LSDプロジェクト</span></a> |
+                <a href="http://www.life-science-dictionary.com/ja/service/"><span class="unchecked" id="server2">Weblioミラー</span></a>
+                ]&nbsp;&nbsp;
+                文字 [
+                <a href="javascript:changeFontSize('s');"><span class="unchecked" id="fontsize1">小</span></a> |
+                <a href="javascript:changeFontSize('m');"><span class="unchecked" id="fontsize2">中</span></a> |
+                <a href="javascript:changeFontSize('l');"><span class="unchecked" id="fontsize3">大</span></a> |
+                <a href="javascript:changeFontSize('xl');"><span class="unchecked" id="fontsize4">特大<span></a> ]&nbsp;&nbsp;
+                言語 [
+                <a href="/ja/service/"><span class="unchecked" id="language1">Japanese</span></a> |
+                <a href="/en/service/"><span class="unchecked" id="language2">English</span></a> ]
+            </div>
+            <div class="for_mobile">
+                <div class="preference_button"><a href="javascript:showDetail('menu6');"></a></div>
+                <div class="sub_menu" id="menu6" style="display:none;position:absolute;right:0px;">
+                    <div class="navi colored">サーバ</div>
+                    <div class="navi noborder"><a href="https://lsd-project.jp/ja/service/"><span class="unchecked"
+                                                                                                  id="server3">LSDプロジェクト</span></a>
+                    </div>
+                    <div class="navi bordered"><a href="http://www.life-science-dictionary.com/ja/service/"><span
+                            class="unchecked" id="server4">Weblioミラー</span></a></div>
+                    <div class="navi colored">文字サイズ</div>
+                    <div class="navi noborder"><a href="javascript:changeFontSize('s');"><span class="unchecked"
+                                                                                               id="fontsize5">小サイズ</span></a>
+                    </div>
+                    <div class="navi noborder"><a href="javascript:changeFontSize('m');"><span class="unchecked"
+                                                                                               id="fontsize6">中サイズ</span></a>
+                    </div>
+                    <div class="navi bordered"><a href="javascript:changeFontSize('l');"><span class="unchecked"
+                                                                                               id="fontsize7">大サイズ</span></a>
+                    </div>
+                    <div class="navi colored">言語</div>
+                    <div class="navi noborder"><a href="/ja/service/"><span class="unchecked"
+                                                                            id="language3">Japanese</span></a></div>
+                    <div class="navi bordered"><a href="/en/service/"><span class="unchecked"
+                                                                            id="language4">English</span></a></div>
+                </div>
+            </div>
+        </div>
+        <div class="top_banner">
+            <div class="logo">
+                <a href="/ja/index.html">LIFE SCIENCE DICTIONARY</a>
+            </div>
+        </div>
+        <div class="header">
+            <div class="for_pc">
+                <div class="navi"><a href="javascript:void(0);" onClick="showDetail('menu1');">WebLSD &#9662</a>
+                    <div class="pulldown" id="menu1" style="display:none">
+                        <div class="optionbox_full"><a href="/ja/service/weblsd/index.html">英和・和英</a></div>
+                        <div class="optionbox"><a href="/ja/service/weblsd/thesaurus.html">シソーラス</a></div>
+                        <div class="optionbox"><a href="/ja/service/weblsd/conc.html">コーパス</a></div>
+                    </div>
+                </div>
+                <div class="navi">
+                    <a href="/ja/service/ondemand/index.html">英語教材</a>
+                </div>
+                <div class="navi"><a href="javascript:void(0);" onClick="showDetail('menu2');">変換サービス &#9662;</a>
+                    <div class="pulldown" id="menu2" style="display:none">
+                        <div class="optionbox_full"><a href="/ja/service/etoj/index.html">EtoJ</a></div>
+                        <div class="optionbox"><a href="/ja/service/etoj_v/index.html">EtoJ Vocab</a></div>
+                        <div class="optionbox"><a href="/ja/service/webspell/index.html">WebSpell</a></div>
+                    </div>
+                </div>
+                <div class="navi"><a href="javascript:void(0);" onClick="showDetail('menu3');">アプリ・本 &#9662;</a>
+                    <div class="pulldown" id="menu3" style="display:none">
+                        <div class="optionbox_full"><a href="/ja/project/pc.html">パソコン辞書</a></div>
+                        <div class="optionbox"><a href="/ja/project/mobile.html">スマホ辞書</a></div>
+                        <div class="optionbox"><a href="/ja/project/books.html">書籍</a></div>
+                        <div class="optionbox"><a href="/ja/service/weblsd/galapagos.html">携帯用辞書</a></div>
+                    </div>
+                </div>
+                <div class="navi"><a href="javascript:void(0);" onClick="showDetail('menu4');">プロジェクト &#9662;</a>
+                    <div class="pulldown" id="menu4" style="display:none">
+                        <div class="optionbox_full"><a href="/ja/project/about.html">目的とメンバー</a></div>
+                        <div class="optionbox"><a href="/ja/project/activity.html">活動実績</a></div>
+                        <div class="optionbox"><a href="/ja/project/budget.html">助成</a></div>
+                    </div>
+                </div>
+                <div class="clear_column"></div>
+            </div>
+            <div class="for_mobile">
+                <div class="sub_menu_button"><a href="javascript:showDetail('menu5');"></a></div>
+                <div class="sub_menu" id="menu5" style="display:none">
+                    <div class="navi colored">WebLSD</div>
+                    <div class="navi noborder"><a href="/ja/service/weblsd/index.html">&#8227; 英和・和英</a></div>
+                    <div class="navi noborder"><a href="/ja/service/weblsd/thesaurus.html">&#8227; シソーラス</a></div>
+                    <div class="navi bordered"><a href="/ja/service/weblsd/conc.html">&#8227; コーパス</a></div>
+                    <div class="navi colored">英語教材</div>
+                    <div class="navi bordered"><a href="/ja/service/ondemand/index.html">&#8227; O/D英語教材</a></div>
+                    <div class="navi colored">変換サービス</div>
+                    <div class="navi noborder"><a href="/ja/service/etoj_v/index.html">&#8227; EtoJ Vocab</a></div>
+                    <div class="navi noborder"><a href="/ja/service/etoj/index.html">&#8227; EtoJ</a></div>
+                    <div class="navi bordered"><a href="/ja/service/webspell/index.html">&#8227; WebSpell</a></div>
+                    <div class="navi colored">本・アプリ</div>
+                    <div class="navi noborder"><a href="/ja/project/pc.html">&#8227; パソコン辞書</a></div>
+                    <div class="navi noborder"><a href="/ja/project/mobile.html">&#8227; スマホ辞書</a></div>
+                    <div class="navi noborder"><a href="/ja/project/books.html">&#8227; 書籍</a></div>
+                    <div class="navi bordered"><a href="/ja/service/weblsd/galapagos.html">&#8227; 携帯用辞書</a></div>
+                    <div class="navi colored">プロジェクト</div>
+                    <div class="navi noborder"><a href="/ja/project/about.html">&#8227; 目的とメンバー</a></div>
+                    <div class="navi noborder"><a href="/ja/project/activity.html">&#8227; 活動実績</a></div>
+                    <div class="navi bordered"><a href="/ja/project/budget.html">&#8227; 助成</a></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="main" onClick="closeMenu();">
+        <div style="height:10px;">&nbsp;</div>
+        <div class="input_form" id="inputForm">
+            <form name="QueryInput" method="post" action="/cgi-bin/lsdproj/ejlookup04.pl?opt=c">
+                <div class="service_tab">
+                    <div class="service active highlight"><span>英和・和英</span></div>
+                    <div class="service inactive"><a href="/ja/service/weblsd/thesaurus.html"
+                                                     onClick="cclose();handQuery('thesaurus');return false;">シソーラス</a>
+                    </div>
+                    <div class="service inactive"><a href="/ja/service/weblsd/conc.html"
+                                                     onClick="cclose();handQuery('conc');return false;">コーパス</a></div>
+                </div>
+                <div class="box highlight">
+                    <div class="formbox" id="formbox">
+                        <input class="text02" type="text" name="query" value="cell" autocomplete="off"
+                               onKeyUp="peekQuery();">
+                        <input class="btn" type="submit" value="検索" onClick="saveOptions('ejdic')"
+                               onMouseOver="this.className='btn2'" onMouseOut="this.className='btn'">
+                        <input class="btn" type="button" value="削除" onClick="resetForm()"
+                               onMouseOver="this.className='btn2'" onMouseOut="this.className='btn'">
+                        <input type="checkbox" name="use_incr" value="checked" onClick="putIncCookie()">先読
+                    </div>
+                    <div class="clear_column"></div>
+                    <div>
+                        <div class="incremental" id="incremental" style="display:none;"></div>
+                    </div>
+                </div>
+                <div style="margin-top:-7px;">
+                    <div class="optionbox_full">
+                        &#8227; 語句
+                        <input type="radio" name="mode" value="include">を含む
+                        <input type="radio" name="mode" value="begin with" checked><b>で始まる</b>
+                        <input type="radio" name="mode" value="end with">で終わる
+                        <input type="radio" name="mode" value="exactly match">に一致
+                    </div>
+                    <div class="for_pc">
+                        <div class="optionbox">
+                            &#8227; コーパス参照結果を
+                            <input type="radio" name="newWindow" value="0" checked><b>同じウィンドウ</b>
+                            <input type="radio" name="newWindow" value="1">別ウィンドウ に表示　
+                            <input type="checkbox" name="remember_newWindow" value="1" onChange="saveOptions('ejdic');">設定を記憶
+                        </div>
+                    </div>
+                    <div id="options" style="display:none">
+                        <div class="optionbox">
+                            &#8227; 検索結果を最大
+                            <input type="radio" name="max" value="100">100
+                            <input type="radio" name="max" value="200" checked><b>200</b>
+                            <input type="radio" name="max" value="400">400 件表示
+                        </div>
+                        <div class="optionbox">
+                            &#8227; 日本語の語尾変化を無視
+                            <input type="radio" name="inflect" value="Ignore" checked><b>する</b>
+                            <input type="radio" name="inflect" value="Don't ignore">しない
+                        </div>
+                        <div class="optionbox">
+                            &#8227; 和英検索に
+                            <input type="radio" name="romaji" value="no" checked><b>かな／漢字（推奨）</b>
+                            <input type="radio" name="romaji" value="yes">ローマ字を使用
+                        </div>
+                    </div>
+                    <div class="service_option">
+                        <div id="detailed" style="display:block"><a href="javascript:foldOption('ejdic')">&#9660;
+                            詳細検索</a></div>
+                        <div id="simple" style="display:none"><a href="javascript:foldOption('ejdic')">&#9650; 簡単検索</a>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div style="height:5px;">&nbsp;</div>
+
+        <div class="h4">英和検索結果</div>
+        <div class="box">
+
+            <p id="E018692">
+            <div class="caption">
+                <span class="headword">cell</span>
+                <span class="importance">*****</span>
+                <span class="voice speaker_w"><a
+                        href="/cgi-bin/lsdproj/ejlookup04.pl?opt=c&dicmode=voice&query=10280%2Emp3&eng=cell">音声</a></span>
+                <span class="voice speaker_m"><a
+                        href="/cgi-bin/lsdproj/ejlookup04.pl?opt=c&dicmode=voice&query=00802%2Emp3&eng=cell">音声</a></span>
+                <span class="link tree"><a href="/weblsd/c/tree/D002477">シソーラス</a></span>
+                <span class="link concord"><a href="/weblsd/conc/cell"
+                                              onclick="conclink('cell', '');return false;">コーパス</a></span>
+                <span class="link web">
+    <a target="_blank" href="https://www.ncbi.nlm.nih.gov/pubmed/?term=cell">PubMed</a>,
+    <a target="_blank" href="http://scholar.google.com/scholar?q=cell">Scholar</a>,
+    <a target="_blank"
+       href="https://www.google.co.jp/search?q=cell%20OR%20%E7%B4%B0%E8%83%9E%20OR%20%E3%82%BB%E3%83%AB">Google</a>,
+    <a target="_blank"
+       href="https://www.google.co.jp/search?domains=wikipedia.org&sitesearch=wikipedia.org&q=cell%20OR%20%E7%B4%B0%E8%83%9E%20OR%20%E3%82%BB%E3%83%AB">WikiPedia</a>
+  </span>
+            </div>
+            <div class="meaning">
+                <span class="headword"><a href="/weblsd/c/begin/%E7%B4%B0%E8%83%9E">細胞</a></span>,
+                <span class="headword"><a href="/weblsd/c/begin/%E3%82%BB%E3%83%AB">セル</a></span>
+            </div>
+            <div class="relword">【類義語】<a href="/weblsd/c/begin/cellular">cellular</a>, <a
+                    href="/weblsd/c/begin/%2Dcyte">-cyte</a>, <a href="/weblsd/c/begin/cyto%2D">cyto-</a></div>
+            </p>
+
+            <p id="E221898">
+            <div class="caption">
+                <span class="headword">cell- and tissue-based therapy</span>
+                <span class="importance">*</span>
+                <span class="link tree"><a href="/weblsd/c/tree/D064987">シソーラス</a></span>
+                <span class="link web">
+    <a target="_blank"
+       href="https://www.ncbi.nlm.nih.gov/pubmed/?term=cell%2D%20and%20tissue%2Dbased%20therapy">PubMed</a>,
+    <a target="_blank" href="http://scholar.google.com/scholar?q=cell%2D%20and%20tissue%2Dbased%20therapy">Scholar</a>,
+    <a target="_blank"
+       href="https://www.google.co.jp/search?q=cell%2D%20and%20tissue%2Dbased%20therapy%20OR%20%E7%B4%B0%E8%83%9E%E7%B5%84%E7%B9%94%E7%99%82%E6%B3%95">Google</a>,
+    <a target="_blank"
+       href="https://www.google.co.jp/search?domains=wikipedia.org&sitesearch=wikipedia.org&q=cell%2D%20and%20tissue%2Dbased%20therapy%20OR%20%E7%B4%B0%E8%83%9E%E7%B5%84%E7%B9%94%E7%99%82%E6%B3%95">WikiPedia</a>
+  </span>
+            </div>
+            <div class="relword">【類義語】<a href="/weblsd/c/begin/cell%20therapy">cell therapy</a>, <a
+                    href="/weblsd/c/begin/tissue%20therapy">tissue therapy</a></div>
+            <div class="meaning">
+                <span class="headword"><a href="/weblsd/c/begin/%E7%B4%B0%E8%83%9E%E7%B5%84%E7%B9%94%E7%99%82%E6%B3%95">細胞組織療法</a></span>
+            </div>
+            </p>
+            <p>
+                <b>出力を200件で打ち切りました。</b>
+            </p>
+            <!--<div class="note">th transaction of WebLSD@ </div>-->
+            <div class="note sr">
+                WebLSDに未収録の専門用語（用法）は "新規対訳" から投稿できます。
+            </div>
+        </div>
+
+        <div style="height:10px;">&nbsp;</div>
+    </div>
+
+
+    <div class="button totop"><a href="#page_top">Page Top</a></div>
+
+    <div class="foot_banner">
+
+        <div id="helpLink">
+            <div class="footer_item highlight"><a href="/ja/service/weblsd/help_waei.html#eiwa">英和検索結果について</a></div>
+        </div>
+
+        <div class="footer_item"><a href="/ja/project/guide.html">ご利用ガイド</a></div>
+        <div class="footer_item"><a href="/ja/project/policy.html">ご利用規定</a></div>
+        <div class="footer_item"><a onClick="nopen()" href="/ja/service/new_form.html" target="note">新規対訳・お問い合わせ</a>
+        </div>
+        <div class="clear_column"></div>
+    </div>
+    <div class="footer">
+        Copyright 1993 -
+        <script type="text/javascript"><!--
+        var today = new Date();
+        var year = today.getFullYear();
+        document.write(year);
+        //--></script>
+        ライフサイエンス辞書プロジェクト
+    </div>
+
+</div>
+</body>
+</html>
+
+
