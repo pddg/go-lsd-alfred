@@ -20,7 +20,8 @@ before_deploy:
   - mkdir -p dist
   - mv go-lsd-alfred $TRAVIS_BUILD_DIR/dist/
   - cp resources/* $TRAVIS_BUILD_DIR/dist/
-  - zip $TRAVIS_BUILD_DIR/lsd-alfred.alfredworkflow $TRAVIS_BUILD_DIR/dist/*
+  - cd $TRAVIS_BUILD_DIR/dist
+  - zip $TRAVIS_BUILD_DIR/lsd-alfred.alfredworkflow ./*
 
 deploy:
   provider: releases
