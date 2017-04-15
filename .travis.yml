@@ -17,17 +17,17 @@ script:
 
 before_deploy:
   - go build
-  - mkdir -p dist
+  - mkdir -p $TRAVIS_BUILD_DIR/dist
   - mv go-lsd-alfred $TRAVIS_BUILD_DIR/dist/
   - cp resources/* $TRAVIS_BUILD_DIR/dist/
   - cd $TRAVIS_BUILD_DIR/dist
-  - zip $TRAVIS_BUILD_DIR/lsd-alfred.alfredworkflow ./*
+  - zip lsd-alfred.alfredworkflow ./*
 
 deploy:
   provider: releases
   api_key:
     secure: dPab510XMuenXrthMuKLBOtNrkDPGTOkz2P8I+ClFzjbF5J1wejHu7kcOJIjBHlFqFWww5O+Tth1LGQQ5e2LaZo9wi7c5swGmzOBrsK9MeQTNNtUZmM/WHpbBc1M7cqYlJnJnmlANUTYvKuEE9d9vHyqh17jgOvbxTnlMrozwSebBUfKiOgKbEEkaLTYZyb3k9Gq2iB6e4LtylVzI5Xj0lkp38WrqflZZaI1KPNL6WKAA++6CQ0k9tSe0qHhWQjfKT7Gljm85v/DlcRQl5GBstBURPygC+lpe+g747SCNsY3Y8d1qzc7vbNiWKBTtKTdEGk1SNK1PNA4APScsVo5cnJNSO7H0G+iIYbjad3+x5Ecm+IlEiMhZCKc7AR2UAvxOdaK305wlDXVKupX3ht8AvHZ0fuvP0cPrmKW/PnozZzO5LRYZiKrrJvXPq6/S1enVm0CBaQOs0NNFWnFJ/mDiEL4/tO4Yu63DMCSrADh10RQ15v+Cd5peaS7yr783qvOApNBQPtFw78XcExdHgygNgXwbNlILvoP1W64sdAO4QjBlz3/MRJ3iEWj/HbzlE/gngeoCmBQkVHOl5i2YoCNKsFSE2mq2LyHw3mHD73xniXgsbGExHYZJWsThph8dKK04mDO3tDZvOWZpF+JH/GpBn8C8iPgy9UloGqxHgfwIdw=
-  file: 'lsd-alfred.alfredworkflow'
+  file: '$TRAVIS_BUILD_DIR/dist/lsd-alfred.alfredworkflow'
   skip_cleanup: true
   on:
     tags: true
