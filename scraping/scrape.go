@@ -59,6 +59,7 @@ func findHeadword(meaning *goquery.Selection) (string, string) {
 		headword string
 		url      string
 	)
+	// find "meaning" Text
 	if meaning_a := meaning.Find("a"); meaning_a != nil {
 		headword = meaning_a.Text()
 		if u, exists := meaning_a.Attr("href"); exists {
@@ -66,6 +67,10 @@ func findHeadword(meaning *goquery.Selection) (string, string) {
 		}
 	} else {
 		headword = meaning.Text()
+	}
+	// find "inflection"
+	if inflection := meaning.Next(); inflection.HasClass("inflection") {
+		headword = headword + inflection.Text()
 	}
 	return headword, url
 }

@@ -8,6 +8,16 @@ import (
 	"testing"
 )
 
+var words = []string{"細胞", "セル", "細胞組織療法", "暗黙の", "潜在している"}
+var urls = []string{
+	"/weblsd/c/begin/%E7%B4%B0%E8%83%9E",
+	"/weblsd/c/begin/%E3%82%BB%E3%83%AB",
+	"/weblsd/c/begin/%E7%B4%B0%E8%83%9E%E7%B5%84%E7%B9%94%E7%99%82%E6%B3%95",
+	"/weblsd/c/begin/%E6%9A%97%E9%BB%99",
+	"/weblsd/c/begin/%E6%BD%9C%E5%9C%A8",
+}
+var captions = []string{"cell", "cell", "cell- and tissue-based therapy", "implicit", "implicit"}
+
 func getDoc(t *testing.T) *goquery.Document {
 	html, err := ioutil.ReadFile("./sample.html")
 	if err != nil {
@@ -22,13 +32,7 @@ func getDoc(t *testing.T) *goquery.Document {
 }
 
 func TestFindMeaning(t *testing.T) {
-	expected := []string{
-		"/weblsd/c/begin/%E7%B4%B0%E8%83%9E",
-		"/weblsd/c/begin/%E3%82%BB%E3%83%AB",
-		"/weblsd/c/begin/%E7%B4%B0%E8%83%9E%E7%B5%84%E7%B9%94%E7%99%82%E6%B3%95",
-		"/weblsd/c/begin/%E6%9A%97%E9%BB%99",
-		"/weblsd/c/begin/%E6%BD%9C%E5%9C%A",
-	}
+	expected := urls
 	caption_count := 0
 	mean_count := 0
 	href_count := 0
@@ -49,26 +53,20 @@ func TestFindMeaning(t *testing.T) {
 			})
 		})
 	})
-	if caption_count != 2 {
+	if caption_count != 3 {
 		t.Errorf("Number of scraped 'div.caption' is %v, but expected is %v", caption_count, 2)
 	}
-	if mean_count != 2 {
+	if mean_count != 3 {
 		t.Errorf("Number of scraped 'div.meaning' is %v, but expected is %v", mean_count, 2)
 	}
-	if href_count != 3 {
+	if href_count != 5 {
 		t.Errorf("Number of scraped 'a[href]' is %v, but expected is %v", href_count, 3)
 	}
 }
 
 func TestFindHeadword(t *testing.T) {
-	expected_headword := []string{"細胞", "セル", "細胞組織療法", "暗黙の", "潜在している"}
-	expected_url := []string{
-		"/weblsd/c/begin/%E7%B4%B0%E8%83%9E",
-		"/weblsd/c/begin/%E3%82%BB%E3%83%AB",
-		"/weblsd/c/begin/%E7%B4%B0%E8%83%9E%E7%B5%84%E7%B9%94%E7%99%82%E6%B3%95",
-		"/weblsd/c/begin/%E6%9A%97%E9%BB%99",
-		"/weblsd/c/begin/%E6%BD%9C%E5%9C%A",
-	}
+	expected_headword := words
+	expected_url := urls
 	doc := getDoc(t)
 	count := 0
 	doc.Find("div.caption").Each(func(_ int, caption *goquery.Selection) {
@@ -83,7 +81,7 @@ func TestFindHeadword(t *testing.T) {
 			count++
 		})
 	})
-	if count != 3 {
+	if count != len(expected_url) {
 		t.Errorf("Number of scraped results is %v, but expected is %v", count, 3)
 	}
 }
@@ -104,16 +102,10 @@ func TestScrapeMeaning(t *testing.T) {
 
 func createTestItems() []models.ResponseItem {
 	items := []models.ResponseItem{}
-	headwords := []string{"細胞", "セル", "細胞組織療法", "暗黙の", "潜在している"}
-	cap_headwords := []string{"cell", "cell", "cell- and tissue-based therapy", "implicit"}
-	urls := []string{
-		BaseUrl + "/weblsd/c/begin/%E7%B4%B0%E8%83%9E",
-		BaseUrl + "/weblsd/c/begin/%E3%82%BB%E3%83%AB",
-		BaseUrl + "/weblsd/c/begin/%E7%B4%B0%E8%83%9E%E7%B5%84%E7%B9%94%E7%99%82%E6%B3%95",
-		BaseUrl + "/weblsd/c/begin/%E6%9A%97%E9%BB%99",
-		BaseUrl + "/weblsd/c/begin/%E6%BD%9C%E5%9C%A",
-	}
-	for i := 0; i < 3; i++ {
+	headwords := words
+	cap_headwords := captions
+	expecred_urls := mapUrlAddPrefix(urls)
+	for i := 0; i < len(headwords); i++ {
 		item := new(models.ResponseItem)
 		item.Title, item.Arg, item.Autocomplete = headwords[i], headwords[i], headwords[i]
 		item.Valid = true
@@ -122,10 +114,18 @@ func createTestItems() []models.ResponseItem {
 		item.Mod.Cmd.Subtitle = "Copy '" + headwords[i] + "' to Clipboard"
 		item.Mod.Cmd.Arg = headwords[i]
 		item.Mod.Cmd.Valid = true
-		item.Mod.Shift.Subtitle = "Open: " + urls[i]
-		item.Mod.Shift.Arg = urls[i]
+		item.Mod.Shift.Subtitle = "Open: " + expecred_urls[i]
+		item.Mod.Shift.Arg = expecred_urls[i]
 		item.Mod.Shift.Valid = true
 		items = append(items, *item)
 	}
 	return items
+}
+
+func mapUrlAddPrefix(urls []string) []string {
+	r := make([]string, len(urls))
+	for i, e := range urls {
+		r[i] = BaseUrl + e
+	}
+	return r
 }
